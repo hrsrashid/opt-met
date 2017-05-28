@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "python.unitTest.unittestArgs": [
+    "-v",
+    "-s",
+    ".",
+    "-p",
+    "test_*.py"
+  ],
+  "python.unitTest.unittestEnabled": true
+}
