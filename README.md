@@ -1,4 +1,4 @@
-# Optimizatin methods [![Build Status](https://travis-ci.org/hrsrashid/opt-met.svg?branch=master)](https://travis-ci.org/hrsrashid/opt-met)
+# Optimization methods [![Build Status](https://travis-ci.org/hrsrashid/opt-met.svg?branch=master)](https://travis-ci.org/hrsrashid/opt-met)
 
 implementation of university class tasks
 
