@@ -2,4 +2,6 @@ language: python
 python:
   - '3.6'
 
-script: python -m unittest discover -p 'test_*.py' -v -s .
+script:
+  - python -m unittest discover -p 'test_*.py' -v -s .
+  - find . -name 'task[1-5].py' -print -exec python {} \;
