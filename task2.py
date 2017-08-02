@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import tasks
-from minimum_fibo import find_minimum_fibo
-from minimum_golden import find_minimum_golden
+import optmet.tasks as tasks
+from optmet.minimum_fibo import find_minimum_fibo
+from optmet.minimum_golden import find_minimum_golden
 
 
 def pretty_print(prefix, function, minimum):

@@ -1,6 +1,6 @@
 from typing import Iterator
 from itertools import takewhile
-from function import Function, Domain
+from optmet.function import Function, Domain
 
 
 def find_minimum_fibo(func: Function, epsilon: float) -> float:

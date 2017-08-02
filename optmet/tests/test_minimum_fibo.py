@@ -1,6 +1,6 @@
 import unittest
-from minimum_fibo import find_minimum_fibo, fiboUntil
-from function import Function, Domain
+from optmet.minimum_fibo import find_minimum_fibo, fiboUntil
+from optmet.function import Function, Domain
 
 
 class MinimumFiboTest(unittest.TestCase):

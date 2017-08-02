@@ -1,5 +1,5 @@
 import unittest
-from function import Function, Domain
+from optmet.function import Domain
 
 
 class TestDomain(unittest.TestCase):

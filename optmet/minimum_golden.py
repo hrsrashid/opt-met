@@ -1,5 +1,5 @@
 from math import sqrt
-from function import Function, Domain
+from optmet.function import Function, Domain
 
 
 GOLDEN_RATIO = (sqrt(5) + 1) / 2

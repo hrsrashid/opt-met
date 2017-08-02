@@ -1,6 +1,6 @@
 import unittest
-from minimum_dichotomy import find_minimum_dichotomy
-from function import Function, Domain
+from optmet.minimum_dichotomy import find_minimum_dichotomy
+from optmet.function import Function, Domain
 
 
 class MinimumDichotomyTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
-from minimum_golden import find_minimum_golden
-from function import Function, Domain
+from optmet.minimum_golden import find_minimum_golden
+from optmet.function import Function, Domain
 
 
 class MinimumGoldenTest(unittest.TestCase):

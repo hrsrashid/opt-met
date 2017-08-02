@@ -1,4 +1,4 @@
-from function import Function, Domain
+from optmet.function import Function, Domain
 
 EPSILON = .5
 DELTA = .2

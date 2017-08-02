@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import tasks
-from minimum_dichotomy import find_minimum_dichotomy
+import optmet.tasks as tasks
+from optmet.minimum_dichotomy import find_minimum_dichotomy
 
 for task_num in tasks.TASKS['1']:
     function = tasks.FUNCTIONS[task_num]

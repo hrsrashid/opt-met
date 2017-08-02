@@ -1,4 +1,4 @@
-from function import Function, Domain
+from optmet.function import Function, Domain
 
 
 def find_minimum_dichotomy(func: Function, epsilon: float, delta: float) -> float:
