@@ -6,25 +6,27 @@ GOLDEN_RATIO = (sqrt(5) + 1) / 2
 
 
 def find_minimum_golden(func: Function, epsilon: float) -> float:
-    a, b = func.domain
-    c = right(a, b)
-    d = left(a, b)
+    assert func.domain
 
-    while abs(c - d) > epsilon:
-        if func(c) < func(d):
-            b = d
+    span = Domain(*func.domain)
+    r = right(span)
+    l = left(span)
+
+    while abs(r - l) > epsilon:
+        if func(r) < func(l):
+            span.x1 = l
         else:
-            a = c
+            span.x0 = r
 
-        c = right(a, b)
-        d = left(a, b)
+        r = right(span)
+        l = left(span)
 
-    return (b + a) / 2
-
-
-def right(a, b):
-    return b - (b - a) / GOLDEN_RATIO
+    return span.median()
 
 
-def left(a, b):
-    return a + (b - a) / GOLDEN_RATIO
+def right(span: Domain):
+    return span.x1 - span.len() / GOLDEN_RATIO
+
+
+def left(span: Domain):
+    return span.x0 + span.len() / GOLDEN_RATIO

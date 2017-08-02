@@ -2,6 +2,8 @@ from function import Function, Domain
 
 
 def find_minimum_dichotomy(func: Function, epsilon: float, delta: float) -> float:
+    assert func.domain
+
     a0, b0 = func.domain
     domain_length = func.domain.len()
 

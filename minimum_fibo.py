@@ -1,27 +1,26 @@
 from typing import Iterator
 from itertools import takewhile
-from function import Function
+from function import Function, Domain
 
 
 def find_minimum_fibo(func: Function, epsilon: float) -> float:
     assert func.domain
 
     f_seq = fiboUntil(func.domain.len() / epsilon)
-    a = func.domain.x0
-    b = func.domain.x1
+    span = Domain(*func.domain)
     k = len(f_seq) - 1
 
     while k > 2:
-        d = f_seq[k - 2] / f_seq[k] * (b - a)
+        d = f_seq[k - 2] / f_seq[k] * span.len()
 
-        if func(a + d) >= func(b - d):
-            a += d
+        if func(span.x0 + d) >= func(span.x1 - d):
+            span.x0 += d
         else:
-            b -= d
+            span.x1 -= d
 
         k -= 1
 
-    return (a + b) / 2
+    return span.median()
 
 
 def fiboUntil(number) -> [int]:
