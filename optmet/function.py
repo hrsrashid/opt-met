@@ -46,3 +46,24 @@ class Function:
 
     def __format__(self, fmt):
         return '{:{fmt}}'.format(str(self), fmt=fmt)
+
+    def derivative(self, *args, **kwargs):
+        """
+        *args - point to calculate derivative at\n
+        epsilon=1e-5 - tolerance\n
+        index=0 - which argument to augment
+        """
+        epsilon = kwargs.get('epsilon', 1e-5)
+        assert epsilon > 0
+        index = kwargs.get('index', 0)
+        augmented_args = list(args)
+        augmented_args[index] += epsilon
+        return (self.f(*augmented_args) - self.f(*args)) / epsilon
+
+    def gradient(self, *args, **kwargs):
+        """
+        *args - point to calculate gradient at\n
+        epsilon=1e-5 - tolerance
+        """
+        epsilon = kwargs.get('epsilon', 1e-5)
+        return tuple(self.derivative(*args, index=i, epsilon=epsilon) for i in range(0, len(args)))
