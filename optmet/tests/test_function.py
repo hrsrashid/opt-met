@@ -26,12 +26,13 @@ class TestFunction(unittest.TestCase):
     def setUp(self):
         self.eps = 1e-3
         self.places = 2
+        self.parabola = Function(f=lambda x: x * x)
+        self.func_xy = Function(f=lambda x, y: x * y)
 
     def test_derivative(self):
-        parabola = Function(f=lambda x: x * x)
-        self.assertAlmostEqual(parabola.derivative(
+        self.assertAlmostEqual(self.parabola.derivative(
             0, epsilon=self.eps),  0, self.places, 'parabola at 0')
-        self.assertAlmostEqual(parabola.derivative(
+        self.assertAlmostEqual(self.parabola.derivative(
             -5, epsilon=self.eps), -10, self.places, 'parabola at -5')
         exponent = Function(f=exp)
         self.assertAlmostEqual(exponent.derivative(
@@ -40,7 +41,23 @@ class TestFunction(unittest.TestCase):
             5, epsilon=self.eps / 10), 148.4, 1, 'exponent at 5')
 
     def test_gradient(self):
-        func = Function(f=lambda x, y: x * y)
-        x, y = func.gradient(1, 2, epsilon=self.eps)
+        x, y = self.func_xy.gradient(1, 2, epsilon=self.eps)
         self.assertAlmostEqual(x, 2, self.places, 'x')
         self.assertAlmostEqual(y, 1, self.places, 'y')
+
+    def test_derivative2(self):
+        self.assertAlmostEqual(self.parabola.derivative2(
+            0, epsilon=self.eps), 2, self.places, 'parabola at 0')
+        self.assertAlmostEqual(self.parabola.derivative2(
+            40, epsilon=self.eps), 2, self.places, 'parabola at 40')
+
+        self.assertAlmostEqual(Function(f=lambda x, y: x + y).derivative2(
+            5, 3, epsilon=self.eps, index2=1), 0, self.places, 'x+y by x by y')
+
+        self.assertAlmostEqual(Function(f=lambda x, y: x * y * y).derivative2(
+            5, 3, epsilon=self.eps, index2=1), 6, self.places, 'xyy by x by y')
+
+        self.assertAlmostEqual(self.func_xy.derivative2(
+            -4, 5, epsilon=self.eps), 0, self.places, 'xy by x by x')
+        self.assertAlmostEqual(self.func_xy.derivative2(
+            -2, 6, epsilon=self.eps, index2=1), 1, self.places, 'xy by x by y')

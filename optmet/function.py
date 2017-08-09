@@ -56,9 +56,29 @@ class Function:
         epsilon = kwargs.get('epsilon', 1e-5)
         assert epsilon > 0
         index = kwargs.get('index', 0)
-        augmented_args = list(args)
-        augmented_args[index] += epsilon
+        augmented_args = self.augment(index, epsilon, *args)
         return (self.f(*augmented_args) - self.f(*args)) / epsilon
+
+    def derivative2(self, *args, **kwargs):
+        """
+        *args - point to calc second derivative at\n
+        epsilon=1e-5 - tolerance\n
+        index1=0 - which argument to augment first\n
+        index2=0 - which argument to augment second
+        """
+        epsilon = kwargs.get('epsilon', 1e-5)
+        assert epsilon > 0
+        index1 = kwargs.get('index1', 0)
+        index2 = kwargs.get('index2', 0)
+        augmented_args_x = self.augment(index1, epsilon, *args)
+        augmented_args_y = self.augment(index2, epsilon, *args)
+        augmented_args_xy = self.augment(index2, epsilon, *augmented_args_x)
+        return (self.f(*augmented_args_xy) - self.f(*augmented_args_x) - self.f(*augmented_args_y) + self.f(*args)) / epsilon / epsilon
+
+    def augment(self, i, delta, *args):
+        res = list(args)
+        res[i] += delta
+        return res
 
     def gradient(self, *args, **kwargs):
         """
