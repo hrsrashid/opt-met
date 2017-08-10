@@ -1,5 +1,6 @@
 from typing import List
 from math import fsum
+from inspect import signature
 
 
 class Domain:
@@ -31,6 +32,7 @@ class Domain:
 class Function:
     def __init__(self, **kwargs):
         self.f = kwargs.get('f', lambda: 0)
+        self.args_count = kwargs.get('nargs', None)
         self.domain = kwargs.get('domain')
         self.description = kwargs.get('description', '<func>')
         self.x0 = kwargs.get('x0')
@@ -46,6 +48,11 @@ class Function:
 
     def __format__(self, fmt):
         return '{:{fmt}}'.format(str(self), fmt=fmt)
+
+    def get_argument_count(self):
+        if self.args_count is None:
+            self.args_count = len(signature(self.f).parameters)
+        return self.args_count
 
     def derivative(self, *args, **kwargs):
         """

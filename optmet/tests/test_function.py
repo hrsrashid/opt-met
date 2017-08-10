@@ -34,7 +34,7 @@ class TestFunction(unittest.TestCase):
             0, epsilon=self.eps),  0, self.places, 'parabola at 0')
         self.assertAlmostEqual(self.parabola.derivative(
             -5, epsilon=self.eps), -10, self.places, 'parabola at -5')
-        exponent = Function(f=exp)
+        exponent = Function(f=exp, nargs=1)
         self.assertAlmostEqual(exponent.derivative(
             0, epsilon=self.eps), 1, self.places, 'exponent at 0')
         self.assertAlmostEqual(exponent.derivative(
