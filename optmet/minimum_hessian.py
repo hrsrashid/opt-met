@@ -1,9 +1,10 @@
 from typing import Iterable
 from optmet.function import Function
+from optmet.vector import Vector
 
 
 def find_minimum_hessian(func: Function, epsilon: float):
-    return 0
+    return Vector(0, 0)
 
 
 def hessian_matrix(func: Function, args: Iterable[float], epsilon: float):

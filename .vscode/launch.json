@@ -1,6 +1,22 @@
 {
   "version": "0.2.0",
   "configurations": [
+  {
+    "name": "Python tests",
+    "type": "python",
+    "request": "launch",
+    "stopOnEntry": true,
+    "pythonPath": "${config:python.pythonPath}",
+    "module": "unittest",
+    "cwd": "${workspaceRoot}",
+    "env": {},
+    "envFile": "${workspaceRoot}/.env",
+    "debugOptions": [
+      "WaitOnAbnormalExit",
+      "WaitOnNormalExit",
+      "RedirectOutput"
+    ]
+  },
     {
       "name": "task 1",
       "type": "python",

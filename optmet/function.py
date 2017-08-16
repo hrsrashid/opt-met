@@ -1,6 +1,7 @@
 from typing import List
 from math import fsum
 from inspect import signature
+from optmet.vector import Vector
 
 
 class Domain:
@@ -15,7 +16,7 @@ class Domain:
     def __str__(self):
         return "[{0.x0:.2f}, {0.x1:.2f}]".format(self)
 
-    def len(self):
+    def __abs__(self):
         return abs(self.x1 - self.x0)
 
     def __getitem__(self, index: int):
@@ -93,4 +94,4 @@ class Function:
         epsilon=1e-5 - tolerance
         """
         epsilon = kwargs.get('epsilon', 1e-5)
-        return tuple(self.derivative(*args, index=i, epsilon=epsilon) for i in range(0, len(args)))
+        return Vector(self.derivative(*args, index=i, epsilon=epsilon) for i in range(len(args)))

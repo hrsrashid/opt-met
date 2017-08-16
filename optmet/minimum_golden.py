@@ -25,8 +25,8 @@ def find_minimum_golden(func: Function, epsilon: float) -> float:
 
 
 def right(span: Domain):
-    return span.x1 - span.len() / GOLDEN_RATIO
+    return span.x1 - abs(span) / GOLDEN_RATIO
 
 
 def left(span: Domain):
-    return span.x0 + span.len() / GOLDEN_RATIO
+    return span.x0 + abs(span) / GOLDEN_RATIO

@@ -15,8 +15,8 @@ class TestDomain(unittest.TestCase):
         self.assertNotIn(-3, self.domain, 'behind')
 
     def test_length(self):
-        self.assertEqual(self.domain.len(), 4)
-        self.assertEqual(Domain(0, 0).len(), 0)
+        self.assertEqual(abs(self.domain), 4)
+        self.assertEqual(abs(Domain(0, 0)), 0)
 
     def test_median(self):
         self.assertEqual(self.domain.median(), 3)

@@ -5,7 +5,7 @@ def find_minimum_dichotomy(func: Function, epsilon: float, delta: float) -> floa
     assert func.domain
 
     a0, b0 = func.domain
-    domain_length = func.domain.len()
+    domain_length = abs(func.domain)
 
     assert epsilon > 0
     assert delta > 0
@@ -16,7 +16,7 @@ def find_minimum_dichotomy(func: Function, epsilon: float, delta: float) -> floa
 
     while domain_length > epsilon:
         a0, b0 = next_domain
-        domain_length = next_domain.len()
+        domain_length = abs(next_domain)
 
         domain_median = next_domain.median()
         x1 = domain_median - delta

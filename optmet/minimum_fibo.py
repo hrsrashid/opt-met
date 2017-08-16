@@ -6,12 +6,12 @@ from optmet.function import Function, Domain
 def find_minimum_fibo(func: Function, epsilon: float) -> float:
     assert func.domain
 
-    f_seq = fiboUntil(func.domain.len() / epsilon)
+    f_seq = fiboUntil(abs(func.domain) / epsilon)
     span = Domain(*func.domain)
     k = len(f_seq) - 1
 
     while k > 2:
-        d = f_seq[k - 2] / f_seq[k] * span.len()
+        d = f_seq[k - 2] / f_seq[k] * abs(span)
 
         if func(span.x0 + d) >= func(span.x1 - d):
             span.x0 += d
