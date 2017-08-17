@@ -1,6 +1,6 @@
 from array import array
 from math import sqrt, fsum
-from optmet.lib import identity, square, flatten, is_number, close_to
+from optmet.lib import square, flatten, is_number, close_to
 
 
 class Vector:
@@ -11,10 +11,11 @@ class Vector:
         return self.components[index]
 
     def __str__(self, **kwargs):
-        predicate = kwargs.get('predicate', identity)
-        if not callable(predicate):
-            predicate = identity
+        predicate = kwargs.get('predicate', str)
         return '(' + ', '.join(map(predicate, self.components)) + ')'
+
+    def __repr__(self):
+        return self.__str__()
 
     def __format__(self, fmt):
         return self.__str__(predicate=lambda x: '{:{fmt}}'.format(x, fmt=fmt))

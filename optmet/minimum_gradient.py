@@ -7,7 +7,7 @@ def find_minimum_gradient(func: Function, epsilon=1e-5, delta=1e-2, **kwargs):
     step_size = abs(current)
 
     while step_size > epsilon:
-        previous = current
+        previous = Vector(*current)
         current += -delta * func.gradient(*previous, epsilon=epsilon)
         step_size = abs(current - previous)
 
