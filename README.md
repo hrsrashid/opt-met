@@ -6,7 +6,7 @@ implementation of university class tasks
 2. - [x] Fibonacci search
    - [x] golden-section
 3. - [ ] `𝑓ʹ(𝑥) = 0` and Hessian matrix
-4. - [ ] Gradient descent
+4. - [x] Gradient descent
    - [ ] Newton's method
    - [ ] Newton–Raphson method
    - [ ] Fletcher–Reeves (Nonlinear conjugate gradient method)
