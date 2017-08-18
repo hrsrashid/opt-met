@@ -6,7 +6,7 @@ from optmet.minimum_newton import find_minimum_newton
 
 
 def pretty_print(prefix, function, minimum):
-    print("{prefix:^20}: minimum of {0} is {1:.2f}".format(
+    print("{prefix:<20} minimum of {0} is {1:.2f}".format(
         function, minimum, prefix=prefix), flush=True)
 
 
