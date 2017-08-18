@@ -7,7 +7,7 @@ implementation of university class tasks
    - [x] golden-section
 3. _(manual task)_
 4. - [x] Gradient descent
-   - [ ] Newton's method
+   - [x] Newton's method
    - [ ] Newton–Raphson method
    - [ ] Fletcher–Reeves (Nonlinear conjugate gradient method)
 5. - [ ] method of Lagrange multipliers
