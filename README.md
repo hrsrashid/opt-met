@@ -5,7 +5,7 @@ implementation of university class tasks
 1. - [x] Dichotomy method
 2. - [x] Fibonacci search
    - [x] golden-section
-3. - [ ] `𝑓ʹ(𝑥) = 0` and Hessian matrix
+3. _(manual task)_
 4. - [x] Gradient descent
    - [ ] Newton's method
    - [ ] Newton–Raphson method
