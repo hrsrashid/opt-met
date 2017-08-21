@@ -1,6 +1,6 @@
 from array import array
-from math import sqrt, fsum
-from optmet.lib import square, flatten, is_number, close_to
+from math import fsum
+from optmet.lib import product, flatten, is_number, close_to
 
 
 class Vector:
@@ -12,7 +12,7 @@ class Vector:
 
     def __str__(self, **kwargs):
         predicate = kwargs.get('predicate', str)
-        return '(' + ', '.join(map(predicate, self.components)) + ')'
+        return '(' + ', '.join(map(predicate, self)) + ')'
 
     def __repr__(self):
         return self.__str__()
@@ -21,7 +21,7 @@ class Vector:
         return self.__str__(predicate=lambda x: '{:{fmt}}'.format(x, fmt=fmt))
 
     def __abs__(self):
-        return sqrt(fsum(map(square, self.components)))
+        return max(map(abs, self))
 
     def __bool__(self):
         return len(self.components) > 0
@@ -33,22 +33,22 @@ class Vector:
             return len(self.components) == 1 and close_to(self[0], operand)
 
     def __neg__(self):
-        return Vector(-x for x in self.components)
+        return Vector(-x for x in self)
 
     def __mul__(self, operand):
         if isinstance(operand, Vector):
-            raise NotImplementedError()
+            return fsum(map(product, self, operand))
         if is_number(operand):
-            return Vector(operand * x for x in self.components)
+            return Vector(operand * x for x in self)
 
     def __rmul__(self, operand):
         return self * operand
 
     def __add__(self, operand):
         if isinstance(operand, Vector):
-            return Vector(map(lambda l, r: l + r, self.components, operand))
+            return Vector(map(lambda l, r: l + r, self, operand))
         if is_number(operand):
-            return Vector(x + operand for x in self.components)
+            return Vector(x + operand for x in self)
 
     def __radd__(self, operand):
         return self + operand
