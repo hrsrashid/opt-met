@@ -44,6 +44,12 @@ class Vector:
     def __rmul__(self, operand):
         return self * operand
 
+    def __truediv__(self, operand):
+        if isinstance(operand, Vector):
+            raise NotImplementedError()
+        if is_number(operand):
+            return self * (1 / operand)
+
     def __add__(self, operand):
         if isinstance(operand, Vector):
             return Vector(map(lambda l, r: l + r, self, operand))

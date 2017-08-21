@@ -1,3 +1,9 @@
+from typing import Iterable
+from math import fsum
+from functools import reduce
+from collections import deque
+
+
 def square(side):
     return side * side
 
