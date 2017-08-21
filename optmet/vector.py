@@ -1,6 +1,5 @@
 from array import array
-from math import sqrt, fsum
-from optmet.lib import square, flatten, is_number, close_to
+from optmet.lib import flatten, is_number, close_to
 
 
 class Vector:
@@ -21,7 +20,7 @@ class Vector:
         return self.__str__(predicate=lambda x: '{:{fmt}}'.format(x, fmt=fmt))
 
     def __abs__(self):
-        return sqrt(fsum(map(square, self.components)))
+        return max(map(abs, self.components))
 
     def __bool__(self):
         return len(self.components) > 0
