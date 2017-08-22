@@ -38,7 +38,7 @@ class TestFunction(unittest.TestCase):
         self.assertAlmostEqual(exponent.derivative(
             0, epsilon=self.eps), 1, self.places, 'exponent at 0')
         self.assertAlmostEqual(exponent.derivative(
-            5, epsilon=self.eps / 10), 148.4, 1, 'exponent at 5')
+            10, epsilon=self.eps), 22026.4657948, self.places, 'exponent at 10')
 
     def test_gradient(self):
         x, y = self.func_xy.gradient(1, 2, epsilon=self.eps)

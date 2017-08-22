@@ -55,7 +55,7 @@ class Function:
             self.args_count = len(signature(self.f).parameters)
         return self.args_count
 
-    def derivative(self, *args, **kwargs):
+    def derivative_raw(self, *args, **kwargs):
         """
         *args - point to calculate derivative at\n
         epsilon=1e-5 - tolerance\n
@@ -66,6 +66,21 @@ class Function:
         index = kwargs.get('index', 0)
         augmented_args = self.augment(index, epsilon, *args)
         return (self.f(*augmented_args) - self.f(*args)) / epsilon
+
+    def derivative(self, *args, **kwargs):
+        epsilon = kwargs.get('epsilon', 1e-5)
+        index = kwargs.get('index', 0)
+        delta = epsilon
+        current = self.derivative_raw(*args, **kwargs)
+        diff = epsilon + 1
+
+        while diff > epsilon:
+            delta /= 10
+            previous = current
+            current = self.derivative_raw(*args, epsilon=delta, index=index)
+            diff = abs(current - previous)
+
+        return current
 
     def derivative2(self, *args, **kwargs):
         """
