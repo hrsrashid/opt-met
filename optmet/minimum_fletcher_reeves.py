@@ -5,7 +5,7 @@ from optmet.minimum_golden import find_minimum_golden
 
 def find_minimum_fletcher_reeves(func: Function, epsilon=1e-5, linear_minimizer=find_minimum_golden, **kwargs):
     current = Vector(*func.x0) or kwargs.get('x0') or Vector(0)
-    difference = epsilon + 1
+    difference = 0
     grad = func.gradient(*current, epsilon=epsilon)
     prev_grad_square = 1
     search_dir = 0
@@ -13,7 +13,7 @@ def find_minimum_fletcher_reeves(func: Function, epsilon=1e-5, linear_minimizer=
     while abs(grad) > epsilon:
         previous = Vector(*current)
         grad_square = grad * grad
-        if difference < epsilon:
+        if difference < epsilon ** 2:
             alpha = 0
         else:
             alpha = grad_square / prev_grad_square
