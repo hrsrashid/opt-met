@@ -8,5 +8,5 @@ implementation of university class tasks
 3. _(manual task)_
 4. - [x] Gradient descent
    - [x] Newton's method, Newton–Raphson method
-   - [ ] Fletcher–Reeves (Nonlinear conjugate gradient method)
+   - [x] Fletcher–Reeves (Nonlinear conjugate gradient method)
 5. - [ ] method of Lagrange multipliers
