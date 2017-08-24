@@ -13,9 +13,9 @@ def pretty_print(prefix, function, minimum):
 
 for task_num in tasks.TASKS['4']:
     function = tasks.FUNCTIONS[task_num]
-    minimum = find_minimum_gradient(function, tasks.EPSILON)
+    minimum = find_minimum_gradient(function)
     pretty_print('gradient descent', function, minimum)
     minimum = find_minimum_newton(function, tasks.EPSILON)
     pretty_print('Newton`s method', function, minimum)
-    minimum = find_minimum_fletcher_reeves(function, tasks.EPSILON)
+    minimum = find_minimum_fletcher_reeves(function)
     pretty_print('Fletcher-Reeves', function, minimum)
