@@ -37,7 +37,7 @@ class Function:
         self.domain = kwargs.get('domain')
         self.description = kwargs.get('description', '<func>')
         self.x0 = kwargs.get('x0')
-        self.curve = kwargs.get('curve')
+        self.constraint = kwargs.get('constraint')
 
     def __call__(self, *args: List[float]):
         if self.domain:

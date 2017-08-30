@@ -1,6 +1,7 @@
 from optmet.function import Function
 from optmet.vector import Vector
-from optmet.lib import roots_gauss, hessian_matrix, append_column
+from optmet.lib import hessian_matrix, append_column
+from optmet.roots_gauss import roots_gauss
 
 
 def find_minimum_newton(func: Function, epsilon=1e-5, **kwargs):

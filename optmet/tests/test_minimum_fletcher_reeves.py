@@ -1,4 +1,3 @@
-import os
 import unittest
 from optmet.function import Function
 from optmet.vector import Vector
@@ -15,13 +14,6 @@ class MinimumFletcherReevesTest(unittest.TestCase):
         func = Function(f=lambda x, y: x * x + y * y, x0=Vector(1.1, 0.9))
         minimum = find_minimum_fletcher_reeves(func)
         self.assertAlmostEqual(minimum, Vector(0, 0), 2)
-
-    @unittest.skipIf("TRAVIS" in os.environ and os.environ["TRAVIS"] == "true", "Skipping this test on Travis CI. (passes locally)")
-    def test_multivar2(self):
-        func = Function(f=lambda x, y: 100 * (y - x * x) **
-                        2 + (1 - x)**2, x0=Vector(-1.2, 1))
-        minimum = find_minimum_fletcher_reeves(func)
-        self.assertAlmostEqual(minimum, Vector(1, 1), 2)
 
     def test_task_func(self):
         func = Function(f=lambda x, y: x * x + 6 * y *

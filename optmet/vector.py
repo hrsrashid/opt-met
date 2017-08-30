@@ -23,6 +23,9 @@ class Vector:
     def __abs__(self):
         return max(map(abs, self))
 
+    def __len__(self):
+        return len(self.components)
+
     def __bool__(self):
         return len(self.components) > 0
 
